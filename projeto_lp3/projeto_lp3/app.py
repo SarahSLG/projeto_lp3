@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # Jeito errado de fazer:
 # from validate_docbr import CPF # importa a classe CPF
@@ -15,18 +15,26 @@ app = Flask("Minha App")
 # / - home page  
 @app.route("/")
 def home():
-    return "<h1>Home Page<h1>"
+    return render_template("home.html") #tem q ter esse arquivo na pasta templates
+    # render templates devolve qualquer arquivo, no caso é um arquivo HTML
 
 # /contato - página de contato 
 @app.route("/contato")
 def Contato():
-    return "<h1>Contato<h1>"
+    return render_template("contato.html")
 
 # /produtos - pagina produtos 
 
 @app.route("/produtos")
 def Produtos():
-    return "<h1>Produtos<h1>"
+    lista_produtos = [ # cada produto é um dicionário
+        { "nome": "Coca-cola", "descricao" : "mata a sede" }, 
+        { "nome": "Doritos", "descricao" : "Suja a mão"},
+        {  "nome": "Chocolate", "descricao" : "bom", }
+    ]
+
+    return render_template("produtos.html", produtos=lista_produtos) # cuidado para não repetir o nome da função na hora de criar uma lista
+
 
 # criar uma página /servicos retornar "nossos serviços" (colar oq ja tem)
 # página /gerar-cpf retornar cpf aleatório (usar a biblioteca do cpf que instalamos)
@@ -49,3 +57,5 @@ def gerarCnpj():
 
 app.run()
 
+# layout
+# só vai mudar onde estiver o block
