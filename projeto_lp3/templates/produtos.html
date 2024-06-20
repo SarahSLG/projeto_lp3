@@ -14,12 +14,17 @@
         <a href="/produtos">Produtos</a>
     </nav>
 
+    
+
+
     <h1>Nossos produtos</h1>
     <p>confira nossos produtos</p>
 
     {% for produto in produtos %}
     <h2>{{produto.nome}}</h2>
     <p>{{produto.descricao}}</p>
+    <img src="{{produto.imagem}}" alt="">
+
     {% endfor %}
     
 </body>

@@ -26,11 +26,11 @@ def Contato():
 # /produtos - pagina produtos 
 
 @app.route("/produtos")
-def Produtos():
+def produtos():
     lista_produtos = [ # cada produto é um dicionário
-        { "nome": "Coca-cola", "descricao" : "mata a sede" }, 
-        { "nome": "Doritos", "descricao" : "Suja a mão"},
-        {  "nome": "Chocolate", "descricao" : "bom", }
+        { "nome": "Coca-cola", "descricao" : "mata a sede","imagem": "https://choppmaisfacil.com.br/image/cache/catalog/produtos/Refrigerantes/1648036735_1SZ-1000x1000.jpg"}, 
+        { "nome": "Doritos", "descricao" : "Suja a mão", "imagem": "https://m.media-amazon.com/images/I/610trEtCQuS._AC_UF1000,1000_QL80_.jpg"},
+        {  "nome": "Chocolate", "descricao" : "bom","imagem": "https://cdn.awsli.com.br/800x800/1957/1957771/produto/10935798577112288ec.jpg" }
     ]
 
     return render_template("produtos.html", produtos=lista_produtos) # cuidado para não repetir o nome da função na hora de criar uma lista
@@ -43,6 +43,19 @@ def Produtos():
 @app.route("/servicos")
 def servicos():
     return "<h1> Nossos serviços <h1>" # devolve HTML como STring, péssima pratica
+
+@app.route("/termos-de-uso")
+def termos():
+    return render_template("termos.html")
+
+@app.route("/politicas-de-privacidade")
+def politica():
+    return render_template("politicas.html")
+
+
+@app.route("/como-utilizar")
+def utilizar():
+    return render_template("utilizar.html")
 
 
 @app.route("/cpf")
